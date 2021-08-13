@@ -30,7 +30,7 @@ class Aplicacion(Frame):
 
         self.text = tk.StringVar()
         self.text.set("PALABRA")
-        self.label = ttk.Label(self.raiz, textvariable=self.text)
+        self.label = ttk.Label(self.raiz, text=self.text.get())
 
         self.gen.pack()
         self.label.pack()
@@ -46,7 +46,17 @@ class Aplicacion(Frame):
             car_b = voc[randvoc]
             preword = car_a + car_b
             word += preword
+
+        self.label.destroy()
         self.text.set(word)
+        self.label = ttk.Label(self.raiz, text=self.text.get())
+        self.label.pack()
+
+        
+            
+
+    def changeText(self):
+        self.text.set("Text updated")
         
 def main():
     mi_app = Aplicacion()
